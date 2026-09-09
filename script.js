@@ -28,6 +28,14 @@
   }
 
   /* ---------- portfolio card play/pause ---------- */
+  const isMobile = () => window.matchMedia('(max-width: 720px)').matches;
+
+  function enterFullscreen(video) {
+    if (video.webkitEnterFullscreen) video.webkitEnterFullscreen();
+    else if (video.requestFullscreen) video.requestFullscreen().catch(() => {});
+    else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
+  }
+
   document.querySelectorAll('.portfolio-card .card-video-wrap').forEach((wrap) => {
     const video = wrap.querySelector('video');
     const btn = wrap.querySelector('.play-btn');
@@ -45,6 +53,7 @@
       video.muted = false;
       video.play();
       wrap.classList.add('is-playing');
+      if (isMobile()) enterFullscreen(video);
     }
 
     btn.addEventListener('click', () => {
@@ -57,6 +66,7 @@
     });
 
     video.addEventListener('pause', () => wrap.classList.remove('is-playing'));
+    video.addEventListener('webkitendfullscreen', () => video.pause());
 
     if (scrub && scrubFill) {
       video.addEventListener('timeupdate', () => {

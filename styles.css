@@ -385,7 +385,7 @@ main > section {
 
 .portfolio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px 14px;
   max-width: var(--container);
 }
@@ -401,7 +401,7 @@ main > section {
 .phone-mockup {
   position: relative;
   width: 100%;
-  max-width: 220px;
+  max-width: 260px;
   margin-inline: auto;
   background: var(--frame-silver);
   border-radius: 20px;
