@@ -1,0 +1,11 @@
+# Local dev-only tooling, not part of the published site
+.claude/
+server.js
+review.html
+
+# Raw phone footage not referenced by the site (unused duplicates)
+videos/drainage drink .MP4
+videos/MK snekers.MOV
+videos/shower Gel.MOV
+videos/sunscreen.mov
+videos/тушь.MOV
