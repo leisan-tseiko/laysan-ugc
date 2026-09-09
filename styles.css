@@ -226,7 +226,6 @@ a { color: inherit; }
   .hero { grid-template-columns: 1fr; }
   .hero-left { padding-top: 36px; }
   .hero-photos { padding: 0 var(--pad) 40px; }
-  .hero-photo-b { aspect-ratio: 3 / 4; }
 }
 
 .viewfinder {
