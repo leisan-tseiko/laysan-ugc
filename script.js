@@ -1,6 +1,30 @@
 (() => {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- mobile nav toggle ---------- */
+  const header = document.querySelector('.site-header');
+  const navToggle = document.querySelector('.nav-toggle');
+  const siteNav = document.getElementById('site-nav');
+
+  if (header && navToggle && siteNav) {
+    const setOpen = (open) => {
+      header.classList.toggle('nav-open', open);
+      navToggle.setAttribute('aria-expanded', String(open));
+      navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+
+    navToggle.addEventListener('click', () => {
+      setOpen(!header.classList.contains('nav-open'));
+    });
+    siteNav.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && header.classList.contains('nav-open')) setOpen(false);
+    });
+    window.matchMedia('(min-width: 721px)').addEventListener('change', (mq) => {
+      if (mq.matches) setOpen(false);
+    });
+  }
+
   /* ---------- viewfinder: cycle sources + live timecode ---------- */
   const vf = document.querySelector('.viewfinder-video');
   const timecode = document.querySelector('.timecode');

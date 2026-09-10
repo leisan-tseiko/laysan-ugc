@@ -80,6 +80,45 @@ a { color: inherit; }
 }
 .site-header .site-nav { grid-column: 2; justify-self: center; }
 .site-header .btn { grid-column: 3; justify-self: end; }
+.site-header .site-brand { grid-column: 1; justify-self: start; }
+.site-header .nav-toggle { display: none; }
+
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+.site-brand img { width: 44px; height: auto; }
+
+/* burger button (mobile only) */
+.nav-toggle {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(22, 36, 26, 0.12);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-toggle:focus-visible { border-radius: 999px; }
+.nav-toggle-bar {
+  position: absolute;
+  left: 12px;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ink);
+  transition: transform .25s var(--ease), opacity .2s var(--ease), top .25s var(--ease);
+}
+.nav-toggle-bar:nth-child(1) { top: 14px; }
+.nav-toggle-bar:nth-child(2) { top: 20px; }
+.nav-toggle-bar:nth-child(3) { top: 26px; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) { top: 20px; transform: rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) { top: 20px; transform: rotate(-45deg); }
 
 .mark-dot {
   display: inline-block;
@@ -132,7 +171,33 @@ a { color: inherit; }
 .site-nav a:hover::after { right: 0; }
 
 @media (max-width: 720px) {
-  .site-nav { display: none; }
+  .site-header {
+    grid-template-columns: auto 1fr auto;
+    gap: 12px;
+    padding: 12px var(--pad);
+  }
+  .site-header .site-brand { grid-column: 1; grid-row: 1; }
+  .site-header .btn { grid-column: 2; grid-row: 1; justify-self: end; }
+  .site-header .nav-toggle { display: block; grid-column: 3; grid-row: 1; }
+
+  /* dropdown panel under the sticky header */
+  .site-header .site-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-self: stretch;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin: 4px 0 2px;
+    padding: 6px 0 4px;
+    border-top: 1px solid rgba(22, 36, 26, 0.08);
+    font-size: 17px;
+  }
+  .site-header.nav-open .site-nav { display: flex; }
+  .site-nav a { padding: 13px 0 13px 46px; }
+  .site-nav a::before { left: 0; }
+  .site-nav a::after { display: none; }
 }
 
 /* ---------- buttons ---------- */
