@@ -3,6 +3,5 @@
 server.js
 review.html
 
-# Raw phone footage dropped into videos/ (only transcoded files are published)
-videos/*.MOV
-videos/*.MP4
+# Raw phone footage: drop originals into videos/raw/, only transcoded files in videos/ are published
+videos/raw/
