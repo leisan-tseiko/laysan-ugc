@@ -25,6 +25,7 @@
   --pad: clamp(20px, 4vw, 56px);
 
   --ease: cubic-bezier(.22,.61,.36,1);
+  --header-h: 77px;
 }
 
 * { box-sizing: border-box; }
@@ -269,9 +270,9 @@ a { color: inherit; }
   grid-template-columns: minmax(320px, 1.05fr) 1fr;
   align-items: center;
   gap: clamp(24px, 4vw, 64px);
-  min-height: calc(100vh - 66px);
+  min-height: calc(100vh - var(--header-h));
   padding: 0;
-  max-width: 1600px;
+  max-width: 2000px;
   margin-inline: auto;
 }
 
@@ -286,14 +287,14 @@ a { color: inherit; }
 /* collage: large waterfront photo + overlapping video preview card */
 .hero-collage {
   position: relative;
-  padding: 36px var(--pad) 56px 0;
-  /* photo height is capped to the viewport so the collage never gets cropped */
-  --collage-h: min(calc(100vh - 200px), 660px);
+  padding: 16px var(--pad) 24px 0;
+  /* the photo fills the space under the header, so the collage never gets cropped */
+  --collage-h: min(calc(100vh - var(--header-h) - 40px), 860px);
 }
 .hero-collage-photo {
   position: relative;
   width: min(82%, calc(var(--collage-h) * 0.75));
-  max-width: 560px;
+  max-width: 700px;
   margin-left: auto;
   aspect-ratio: 3 / 4;
   background: #fff;
@@ -310,7 +311,7 @@ a { color: inherit; }
 .viewfinder {
   position: absolute;
   left: -22%;
-  bottom: 7%;
+  bottom: 3%;
   width: 56%;
   aspect-ratio: 3 / 4;
   border-radius: 12px;
