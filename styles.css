@@ -284,6 +284,13 @@ a { color: inherit; }
   padding: 40px var(--pad) 56px;
   gap: 4px;
 }
+/* on wide screens the text sits closer to the collage, closing the middle gap */
+@media (min-width: 1500px) {
+  .hero-left {
+    padding-left: calc(var(--pad) + clamp(40px, 6vw, 160px));
+    padding-right: 24px;
+  }
+}
 
 /* collage: large waterfront photo + overlapping video preview card */
 .hero-collage {
