@@ -291,6 +291,7 @@ a { color: inherit; }
   --collage-h: min(calc(100vh - 200px), 660px);
 }
 .hero-collage-photo {
+  position: relative;
   width: min(82%, calc(var(--collage-h) * 0.75));
   max-width: 560px;
   margin-left: auto;
@@ -305,12 +306,12 @@ a { color: inherit; }
   object-fit: cover;
 }
 
+/* anchored to the photo itself so the overlap survives any scale */
 .viewfinder {
   position: absolute;
-  left: 0;
-  bottom: 12%;
-  width: min(44%, calc(var(--collage-h) * 0.42));
-  max-width: 300px;
+  left: -22%;
+  bottom: 7%;
+  width: 56%;
   aspect-ratio: 3 / 4;
   border-radius: 12px;
   overflow: hidden;
@@ -323,7 +324,7 @@ a { color: inherit; }
   .hero-left { padding-top: 36px; padding-bottom: 32px; }
   .hero-collage { padding: 0 var(--pad) 48px; }
   .hero-collage-photo { margin-right: 0; }
-  .viewfinder { left: var(--pad); }
+  .viewfinder { left: -18%; bottom: 6%; }
 }
 .viewfinder-video {
   width: 100%;
