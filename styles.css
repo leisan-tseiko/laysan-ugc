@@ -15,6 +15,7 @@
   --lime-ink:  #223417;   /* text on lime */
   --near-black:#0E1810;
   --frame-silver:#C0C0C8;
+  --frame-shine: linear-gradient(145deg, #fbfcfd 0%, #d3d7df 14%, #f4f6f8 30%, #b6bcc8 50%, #eef0f4 68%, #c2c8d2 86%, #f6f8fa 100%);
 
   --font-display: 'Fraunces', Georgia, serif;
   --font-script:  'Alex Brush', cursive;
@@ -418,8 +419,12 @@ a { color: inherit; }
   white-space: nowrap;
   font-size: 11px;
   letter-spacing: 0.06em;
-  background: var(--lime);
-  color: var(--lime-ink);
+  /* lime outline, matching the Get in touch button */
+  background: transparent;
+  border: 1px solid var(--lime);
+  border-radius: 999px;
+  color: var(--forest);
+  padding: 9px 18px;
   align-self: flex-start;
 }
 @media (max-width: 420px) {
@@ -493,7 +498,7 @@ main > section {
 .portfolio-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 16px 14px;
+  gap: 28px 24px;
   max-width: var(--container);
 }
 
@@ -510,10 +515,11 @@ main > section {
   width: 100%;
   max-width: 260px;
   margin-inline: auto;
-  background: var(--frame-silver);
+  background: var(--frame-shine);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 20px;
   padding: 7px 7px 9px;
-  box-shadow: 0 16px 32px rgba(14, 24, 16, 0.22);
+  box-shadow: 0 16px 32px rgba(14, 24, 16, 0.22), inset 0 1px 2px rgba(255, 255, 255, 0.9), inset 0 -1px 2px rgba(90, 96, 110, 0.35);
 }
 .phone-notch {
   position: absolute;
@@ -523,7 +529,7 @@ main > section {
   width: 32px;
   height: 4px;
   border-radius: 999px;
-  background: rgba(22, 36, 26, 0.25);
+  background: rgba(70, 76, 90, 0.45);
   z-index: 2;
 }
 .phone-mockup .card-video-wrap,
@@ -672,6 +678,7 @@ main > section {
 
 .phone-mockup--empty {
   background: transparent;
+  border-color: transparent;
   box-shadow: none;
 }
 .phone-mockup--empty .phone-notch { background: rgba(22, 36, 26, 0.18); }
