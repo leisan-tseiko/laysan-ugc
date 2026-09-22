@@ -269,6 +269,7 @@ a { color: inherit; }
 /* ---------- hero ---------- */
 
 .hero {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(320px, 1.05fr) 1fr;
   align-items: center;
@@ -280,11 +281,41 @@ a { color: inherit; }
 }
 
 .hero-left {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 40px var(--pad) 56px;
   gap: 4px;
+}
+
+/* decorative branch filling the gap between the text and the collage */
+.hero-branch {
+  position: absolute;
+  z-index: 0;
+  left: 49.5%;
+  top: 2.4%;
+  width: clamp(220px, 17.5vw, 360px);
+  height: auto;
+  color: var(--forest);
+  opacity: 0.2;
+  pointer-events: none;
+}
+.hero-branch-sway {
+  transform-box: fill-box;
+  transform-origin: 12% 92%;
+  animation: branch-sway 7s ease-in-out infinite;
+}
+@keyframes branch-sway {
+  0%, 100% { transform: rotate(-1deg); }
+  50% { transform: rotate(1.4deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-branch-sway { animation: none; }
+}
+@media (max-width: 768px) {
+  .hero-branch { display: none; }
 }
 /* on wide screens the text sits closer to the collage, closing the middle gap */
 @media (min-width: 1500px) {
@@ -297,6 +328,7 @@ a { color: inherit; }
 /* collage: large waterfront photo + overlapping video preview card */
 .hero-collage {
   position: relative;
+  z-index: 1;
   padding: 16px var(--pad) 24px 0;
   /* the photo fills the space under the header, so the collage never gets cropped */
   --collage-h: min(calc(100vh - var(--header-h) - 40px), 860px);
