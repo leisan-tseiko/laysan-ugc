@@ -988,13 +988,22 @@ main > section {
 /* ---------- pricing ---------- */
 
 .pricing { background: var(--bg-dim); }
+/* pricing shares the portfolio row box so both sections line up */
+.pricing .section-head {
+  max-width: var(--row-w);
+  margin-inline: auto;
+}
 
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 18px;
-  max-width: var(--container);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: var(--row-w);
+  margin-inline: auto;
   margin-bottom: 32px;
+}
+@media (max-width: 860px) {
+  .pricing-grid { grid-template-columns: 1fr; }
 }
 
 .pricing-card {
@@ -1037,7 +1046,14 @@ main > section {
 
 .btn-block { width: 100%; justify-content: center; }
 
-.rates-table-wrap { max-width: var(--container); }
+.rates-table-wrap { max-width: var(--row-w); margin-inline: auto; }
+.rate-note {
+  display: block;
+  margin-top: 5px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--ink-soft);
+}
 .rates-title {
   font-family: var(--font-display);
   font-weight: 500;
