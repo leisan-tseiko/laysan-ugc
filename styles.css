@@ -307,6 +307,14 @@ a { color: inherit; }
   transform-origin: 12% 92%;
   animation: branch-sway 7s ease-in-out infinite;
 }
+/* slimmer frond filling the narrow band beside the headline */
+.hero-branch--slim {
+  left: 41.2%;
+  top: 11%;
+  width: clamp(96px, 8.2vw, 132px);
+  opacity: 0.14;
+}
+.hero-branch--slim .hero-branch-sway { animation-duration: 8.5s; }
 @keyframes branch-sway {
   0%, 100% { transform: rotate(-1deg); }
   50% { transform: rotate(1.4deg); }
