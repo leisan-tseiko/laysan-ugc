@@ -309,10 +309,14 @@ a { color: inherit; }
 }
 /* slimmer frond filling the narrow band beside the headline */
 .hero-branch--slim {
-  left: 41.2%;
-  top: 11%;
-  width: clamp(96px, 8.2vw, 132px);
+  left: 40%;
+  top: 8%;
+  width: clamp(190px, 17.2vw, 285px);
   opacity: 0.14;
+}
+/* wide screens: sit further right so the tail clears the buttons */
+@media (min-width: 1700px) {
+  .hero-branch--slim { left: 44%; width: clamp(230px, 13vw, 275px); }
 }
 .hero-branch--slim .hero-branch-sway { animation-duration: 8.5s; }
 @keyframes branch-sway {
