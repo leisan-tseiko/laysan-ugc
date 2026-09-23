@@ -28,7 +28,7 @@
   /* ---------- viewfinder: cycle sources + live timecode ---------- */
   const vf = document.querySelector('.viewfinder-video');
   const timecode = document.querySelector('.timecode');
-  const clips = ['videos/0819.mp4'];
+  const clips = ['videos/hero-loop.mp4'];
   let clipIndex = 0;
 
   function fmt(t) {
