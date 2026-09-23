@@ -299,7 +299,7 @@ a { color: inherit; }
   width: clamp(220px, 17.5vw, 360px);
   height: auto;
   color: var(--forest);
-  opacity: 0.2;
+  opacity: 0.16;
   pointer-events: none;
 }
 .hero-branch-sway {
