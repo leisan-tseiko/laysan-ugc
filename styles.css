@@ -563,17 +563,27 @@ main > section {
 
 .portfolio-grid {
   display: grid;
-  /* six real videos on one desktop row */
-  grid-template-columns: repeat(6, 1fr);
-  gap: 14px;
+  /* five phones per desktop row, edge to edge; the rest start the next row */
+  grid-template-columns: repeat(5, 1fr);
+  gap: 40px 28px;
   max-width: var(--row-w);
   margin-inline: auto;
 }
+/* phones fill their column so the row spans the full width */
+.portfolio-grid .phone-mockup { max-width: none; }
 @media (max-width: 1199px) {
   .portfolio-grid { grid-template-columns: repeat(3, 1fr); row-gap: 24px; }
+  /* seventh card sits alone on the last row: center it */
+  .portfolio-card:last-of-type:nth-child(3n+1) { grid-column: 2; }
 }
 @media (max-width: 560px) {
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+  .portfolio-card:last-of-type:nth-child(3n+1) { grid-column: auto; }
+  .portfolio-card:last-of-type:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 7px);
+  }
 }
 
 .portfolio-card {
