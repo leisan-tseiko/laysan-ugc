@@ -144,6 +144,9 @@
 
     video.addEventListener('pause', () => wrap.classList.remove('is-playing'));
     video.addEventListener('webkitendfullscreen', () => video.pause());
+    video.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement) video.pause();
+    });
 
     if (scrub && scrubFill) {
       video.addEventListener('timeupdate', () => {
@@ -206,7 +209,9 @@
       } else {
         visibleCards.delete(v);
         if (focusedCard && focusedCard.contains(v)) unfocusCard();
-        v.pause();
+        // only previews stop on scroll: the phone's fullscreen player can report
+        // the clip being watched as off screen, and it must keep playing
+        else if (v.muted) v.pause();
       }
     });
   }, { threshold: 0.5 });
