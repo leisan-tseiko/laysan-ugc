@@ -67,13 +67,15 @@
     const scrubFill = wrap.querySelector('.video-scrub-fill');
     if (!video || !btn) return;
 
-    function play() {
+    function play(fromStart = true) {
       document.querySelectorAll('.card-video-wrap.is-playing').forEach((other) => {
         if (other !== wrap) {
           other.classList.remove('is-playing');
           other.querySelector('video')?.pause();
         }
       });
+      // leaving the muted preview: start the clip over so the viewer sees the hook
+      if (video.muted && fromStart) video.currentTime = 0;
       video.muted = false;
       video.play();
       wrap.classList.add('is-playing');
@@ -81,7 +83,8 @@
     }
 
     btn.addEventListener('click', () => {
-      if (video.paused) {
+      // a muted preview counts as not playing yet: the click starts it with sound
+      if (video.paused || video.muted) {
         play();
       } else {
         video.pause();
@@ -105,7 +108,7 @@
         const rect = scrub.getBoundingClientRect();
         const ratio = Math.min(1, Math.max(0, (e.clientX - rect.left) / rect.width));
         if (video.duration) video.currentTime = ratio * video.duration;
-        if (video.paused) play();
+        if (video.paused || video.muted) play(false);
       });
     }
   });
@@ -138,4 +141,23 @@
     v.setAttribute('data-autoplay', '');
     io.observe(v);
   });
+
+  /* ---------- portfolio cards: muted preview only while on screen ---------- */
+  // each card restarts from the first frame when it scrolls in, so nobody
+  // lands mid-clip; a card the viewer is listening to is paused, not reset
+  const cardIo = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const v = entry.target;
+      if (entry.isIntersecting) {
+        if (reduceMotion || !v.paused) return;
+        v.muted = true;
+        v.currentTime = 0;
+        v.play().catch(() => {});
+      } else {
+        v.pause();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('.portfolio-card .card-video').forEach((v) => cardIo.observe(v));
 })();
