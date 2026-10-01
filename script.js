@@ -60,6 +60,55 @@
     else if (video.webkitRequestFullscreen) video.webkitRequestFullscreen();
   }
 
+  /* ---------- focused card: the clip being watched lifts over a dimmed page ---------- */
+  const cardVideos = () => document.querySelectorAll('.portfolio-card .card-video');
+  const visibleCards = new Set();
+  let focusedCard = null;
+
+  const backdrop = document.createElement('div');
+  backdrop.className = 'card-backdrop';
+  backdrop.innerHTML = '<button class="card-backdrop-close" type="button" aria-label="Close video">'
+    + '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>';
+  document.body.appendChild(backdrop);
+
+  function startPreview(v) {
+    v.muted = true;
+    v.currentTime = 0;
+    v.play().catch(() => {});
+  }
+
+  function focusCard(card) {
+    if (focusedCard && focusedCard !== card) focusedCard.classList.remove('is-focused');
+    focusedCard = card;
+    // grow by up to a quarter, but never past 90% of the screen height
+    const phone = card.querySelector('.phone-mockup');
+    const lift = Math.max(1, Math.min(1.25, (window.innerHeight * 0.9) / phone.offsetHeight));
+    card.style.setProperty('--lift', lift.toFixed(3));
+    card.classList.add('is-focused');
+    backdrop.classList.add('is-on');
+    cardVideos().forEach((v) => { if (!card.contains(v)) v.pause(); });
+    phone.scrollIntoView({ block: 'center', behavior: reduceMotion ? 'auto' : 'smooth' });
+  }
+
+  function unfocusCard() {
+    if (!focusedCard) return;
+    const card = focusedCard;
+    focusedCard = null;
+    card.classList.remove('is-focused');
+    backdrop.classList.remove('is-on');
+    if (reduceMotion) {
+      card.querySelector('.card-video').pause();
+      return;
+    }
+    // everything on screen, the closed clip included, goes back to its muted preview
+    cardVideos().forEach((v) => { if (visibleCards.has(v)) startPreview(v); else v.pause(); });
+  }
+
+  backdrop.addEventListener('click', unfocusCard);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') unfocusCard();
+  });
+
   document.querySelectorAll('.portfolio-card .card-video-wrap').forEach((wrap) => {
     const video = wrap.querySelector('video');
     const btn = wrap.querySelector('.play-btn');
@@ -80,6 +129,7 @@
       video.play();
       wrap.classList.add('is-playing');
       if (isMobile()) enterFullscreen(video);
+      else focusCard(wrap.closest('.portfolio-card'));
     }
 
     btn.addEventListener('click', () => {
@@ -149,11 +199,13 @@
     entries.forEach((entry) => {
       const v = entry.target;
       if (entry.isIntersecting) {
-        if (reduceMotion || !v.paused) return;
-        v.muted = true;
-        v.currentTime = 0;
-        v.play().catch(() => {});
+        visibleCards.add(v);
+        // while a card is focused the rest of the row stays still
+        if (reduceMotion || focusedCard || !v.paused) return;
+        startPreview(v);
       } else {
+        visibleCards.delete(v);
+        if (focusedCard && focusedCard.contains(v)) unfocusCard();
         v.pause();
       }
     });

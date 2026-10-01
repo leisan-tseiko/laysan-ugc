@@ -587,10 +587,52 @@ main > section {
 }
 
 .portfolio-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  transition: transform .45s var(--ease);
 }
+
+/* the clip being watched lifts over a dimmed page; the rest of the row stays still */
+.card-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: rgba(14, 24, 16, 0.62);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s var(--ease);
+}
+.card-backdrop.is-on {
+  opacity: 1;
+  pointer-events: auto;
+}
+.card-backdrop-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(199, 226, 76, 0.92);
+  color: var(--lime-ink);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: transform .2s var(--ease);
+}
+.card-backdrop-close:hover { transform: scale(1.07); }
+.portfolio-card.is-focused {
+  z-index: 61;
+  transform: scale(var(--lift, 1.2));
+}
+.portfolio-card.is-focused:hover .card-video { transform: none; }
+.portfolio-card .card-meta { transition: opacity .3s var(--ease); }
+.portfolio-card.is-focused .card-meta { opacity: 0; }
 
 /* ---------- phone mockup ---------- */
 
