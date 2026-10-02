@@ -123,8 +123,13 @@
           other.querySelector('video')?.pause();
         }
       });
-      // leaving the muted preview: start the clip over so the viewer sees the hook
-      if (video.muted && fromStart) video.currentTime = 0;
+      // leaving the muted preview: start the clip over so the viewer sees the hook.
+      // Pause before the seek, or the preview's old position is heard for a moment
+      // once the sound is on, and the audio jumps back to the start.
+      if (video.muted) {
+        video.pause();
+        if (fromStart) video.currentTime = 0;
+      }
       video.muted = false;
       video.play();
       wrap.classList.add('is-playing');
