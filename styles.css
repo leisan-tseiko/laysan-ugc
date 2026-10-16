@@ -169,7 +169,7 @@ a { color: inherit; }
   width: 40px;
   height: 33px;
   transform: translateY(-50%);
-  background: url("assets/decor/laysan-mark.png") no-repeat center / contain;
+  background: url("assets/decor/laysan-mark.webp?v=5") no-repeat center / contain;
   opacity: 0.9;
   pointer-events: none;
   transition: opacity .2s var(--ease);
@@ -959,8 +959,11 @@ main > section {
   text-align: center;
   min-height: clamp(220px, 26vw, 340px);
   padding: clamp(48px, 7vw, 96px) var(--pad) !important;
-  background: url("assets/decor/linen-shadow-divider.jpg") center / cover no-repeat;
+  background: url("assets/decor/linen-shadow-divider-2560.webp?v=5") center / cover no-repeat;
   color: var(--bg);
+}
+@media (max-width: 800px) {
+  .divider-quote { background-image: url("assets/decor/linen-shadow-divider-1280.webp?v=5"); }
 }
 .divider-quote::before {
   content: '';
@@ -1346,4 +1349,32 @@ main > section {
 }
 @media (max-width: 720px) {
   .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+}
+
+/* ---------- touch screens: every control gets at least a 44×44 hit area ---------- */
+/* the extra area is invisible, so nothing moves or changes size on screen */
+@media (pointer: coarse) {
+  .btn, .site-brand { position: relative; }
+  .btn::after,
+  .site-brand::after,
+  .play-btn::after,
+  .card-backdrop-close::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: max(100%, 44px);
+    height: max(100%, 44px);
+    transform: translate(-50%, -50%);
+  }
+  .video-scrub::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    height: 44px;
+  }
+  /* stacked footer links can't grow invisibly without overlapping, so they get real padding */
+  .footer-col a { padding-block: 10px; margin-bottom: 0; }
 }

@@ -8,13 +8,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,440;0,9..144,560;0,9..144,600;1,9..144,440;1,9..144,700&family=Alex+Brush&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=3">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="styles.css?v=4">
+<link rel="preload" as="image" fetchpriority="high"
+      href="assets/hero/hero-miami-800.webp?v=5"
+      imagesrcset="assets/hero/hero-miami-480.webp?v=5 480w, assets/hero/hero-miami-800.webp?v=5 800w, assets/hero/hero-miami-1200.webp?v=5 1200w, assets/hero/hero-miami-1600.webp?v=5 1600w"
+      imagesizes="(max-width: 900px) 80vw, (max-width: 1700px) 40vw, 680px">
+<link rel="preload" as="image" fetchpriority="high" href="assets/hero/hero-loop-poster.webp?v=5">
 </head>
 <body>
 
 <header class="site-header">
   <a href="#top" class="site-brand" aria-label="Laysan — home">
-    <img src="assets/decor/laysan-mark.png" alt="" width="44" height="36">
+    <img src="assets/decor/laysan-mark.webp?v=5" alt="" width="44" height="36">
   </a>
   <nav class="site-nav" id="site-nav">
     <a href="#top">Home</a>
@@ -203,10 +209,13 @@
 
     <div class="hero-collage" aria-hidden="true">
       <div class="hero-collage-photo">
-        <img src="assets/hero/hero-miami.jpg" alt="Laysan on the Miami waterfront">
+        <img src="assets/hero/hero-miami-800.webp?v=5"
+             srcset="assets/hero/hero-miami-480.webp?v=5 480w, assets/hero/hero-miami-800.webp?v=5 800w, assets/hero/hero-miami-1200.webp?v=5 1200w, assets/hero/hero-miami-1600.webp?v=5 1600w"
+             sizes="(max-width: 900px) 80vw, (max-width: 1700px) 40vw, 680px"
+             width="1600" height="2134" fetchpriority="high" alt="Laysan on the Miami waterfront">
         <div class="viewfinder hero-collage-video">
-          <video class="viewfinder-video" muted loop autoplay playsinline preload="auto">
-            <source src="videos/hero-loop.mp4" type="video/mp4">
+          <video class="viewfinder-video" muted loop autoplay playsinline preload="auto" poster="assets/hero/hero-loop-poster.webp?v=5">
+            <source src="videos/hero-loop.mp4?v=5" type="video/mp4">
           </video>
           <div class="viewfinder-frame">
             <span class="corner tl"></span>
@@ -223,7 +232,10 @@
   <section id="about" class="about">
     <div class="about-media">
       <div class="about-photo">
-        <img src="assets/gallery/gallery-restaurant-2.jpg" alt="Laysan at a café table" loading="lazy">
+        <img src="assets/gallery/gallery-restaurant-2-800.webp?v=5"
+             srcset="assets/gallery/gallery-restaurant-2-480.webp?v=5 480w, assets/gallery/gallery-restaurant-2-800.webp?v=5 800w, assets/gallery/gallery-restaurant-2-864.webp?v=5 864w"
+             sizes="(max-width: 560px) 85vw, 476px"
+             width="864" height="1152" alt="Laysan at a café table" loading="lazy" decoding="async">
       </div>
       <blockquote class="about-quote">
         <p>“Science taught me to explore. UGC teaches me to be there for people.”</p>
@@ -232,7 +244,7 @@
     <div class="about-text">
       <p class="eyebrow eyebrow--chip">About</p>
       <h2>From botanical garden to vertical frame.</h2>
-      <p class="about-lead">I'm 40, and I recently moved to Florida and I'm starting a lot of things fresh here, including on camera. Before that, I spent years between science and finance : reading data, tracking numbers, and making sense of things that looked messy on paper.</p>
+      <p class="about-lead">I'm 40, and I recently moved to Florida and I'm starting a lot of things fresh here, including on camera. Before that, I spent years between science and finance: reading data, tracking numbers, and making sense of things that looked messy on paper.</p>
       <p class="about-lead">In UGC, what keeps me here isn't the camera, it's people. I love thinking about the brand, the product, and the person on the other side of the screen who's deciding whether to buy it. I'm genuinely curious about what works and why.</p>
 
       <div class="about-lists">
@@ -274,8 +286,8 @@
         <div class="phone-mockup">
           <span class="phone-notch"></span>
           <div class="card-video-wrap">
-            <video class="card-video" muted loop playsinline preload="metadata" poster="assets/portfolio/iunik-poster.jpg">
-              <source src="videos/iunik.mp4?v=2" type="video/mp4">
+            <video class="card-video" muted loop playsinline preload="none" data-poster="assets/portfolio/iunik-poster.webp?v=5">
+              <source src="videos/iunik.mp4?v=5" type="video/mp4">
             </video>
             <button class="play-btn" type="button" aria-label="Play or pause video">
               <span class="icon-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5Z"/></svg></span>
@@ -294,8 +306,8 @@
         <div class="phone-mockup">
           <span class="phone-notch"></span>
           <div class="card-video-wrap">
-            <video class="card-video" muted loop playsinline preload="metadata" poster="assets/portfolio/sneakers-poster.jpg">
-              <source src="videos/sneakers.mp4?v=2" type="video/mp4">
+            <video class="card-video" muted loop playsinline preload="none" data-poster="assets/portfolio/sneakers-poster.webp?v=5">
+              <source src="videos/sneakers.mp4?v=5" type="video/mp4">
             </video>
             <button class="play-btn" type="button" aria-label="Play or pause video">
               <span class="icon-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5Z"/></svg></span>
@@ -314,8 +326,8 @@
         <div class="phone-mockup">
           <span class="phone-notch"></span>
           <div class="card-video-wrap">
-            <video class="card-video" muted loop playsinline preload="metadata" poster="assets/portfolio/pets-poster.jpg">
-              <source src="videos/pets.mp4?v=3" type="video/mp4">
+            <video class="card-video" muted loop playsinline preload="none" data-poster="assets/portfolio/pets-poster.webp?v=5">
+              <source src="videos/pets.mp4?v=5" type="video/mp4">
             </video>
             <button class="play-btn" type="button" aria-label="Play or pause video">
               <span class="icon-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5Z"/></svg></span>
@@ -334,8 +346,8 @@
         <div class="phone-mockup">
           <span class="phone-notch"></span>
           <div class="card-video-wrap">
-            <video class="card-video" muted loop playsinline preload="metadata" poster="assets/portfolio/kettle-poster.jpg?v=3">
-              <source src="videos/kettle.mp4?v=4" type="video/mp4">
+            <video class="card-video" muted loop playsinline preload="none" data-poster="assets/portfolio/kettle-poster.webp?v=5">
+              <source src="videos/kettle.mp4?v=5" type="video/mp4">
             </video>
             <button class="play-btn" type="button" aria-label="Play or pause video">
               <span class="icon-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5Z"/></svg></span>
@@ -345,8 +357,8 @@
           </div>
         </div>
         <div class="card-meta">
-          <p class="card-caption"><strong>Home:</strong> kitchen appliance review</p>
-          <span class="category-badge badge-home">Home · Review</span>
+          <p class="card-caption"><strong>Home:</strong> slow morning with my kettle</p>
+          <span class="category-badge badge-home">Home · Aesthetic</span>
         </div>
       </article>
 
@@ -354,8 +366,8 @@
         <div class="phone-mockup">
           <span class="phone-notch"></span>
           <div class="card-video-wrap">
-            <video class="card-video" muted loop playsinline preload="metadata" poster="assets/portfolio/sunscreen-poster.jpg">
-              <source src="videos/sunscreen.mp4?v=3" type="video/mp4">
+            <video class="card-video" muted loop playsinline preload="none" data-poster="assets/portfolio/sunscreen-poster.webp?v=5">
+              <source src="videos/sunscreen.mp4?v=5" type="video/mp4">
             </video>
             <button class="play-btn" type="button" aria-label="Play or pause video">
               <span class="icon-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5Z"/></svg></span>
@@ -374,8 +386,8 @@
         <div class="phone-mockup">
           <span class="phone-notch"></span>
           <div class="card-video-wrap">
-            <video class="card-video" muted loop playsinline preload="metadata" poster="assets/portfolio/home-balcony-poster.jpg">
-              <source src="videos/home-balcony.mp4?v=2" type="video/mp4">
+            <video class="card-video" muted loop playsinline preload="none" data-poster="assets/portfolio/home-balcony-poster.webp?v=5">
+              <source src="videos/home-balcony.mp4?v=5" type="video/mp4">
             </video>
             <button class="play-btn" type="button" aria-label="Play or pause video">
               <span class="icon-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5Z"/></svg></span>
@@ -394,8 +406,8 @@
         <div class="phone-mockup">
           <span class="phone-notch"></span>
           <div class="card-video-wrap">
-            <video class="card-video" muted loop playsinline preload="metadata" poster="assets/portfolio/shower-gel-poster.jpg">
-              <source src="videos/shower-gel.mp4?v=3" type="video/mp4">
+            <video class="card-video" muted loop playsinline preload="none" data-poster="assets/portfolio/shower-gel-poster.webp?v=5">
+              <source src="videos/shower-gel.mp4?v=5" type="video/mp4">
             </video>
             <button class="play-btn" type="button" aria-label="Play or pause video">
               <span class="icon-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5Z"/></svg></span>
@@ -414,8 +426,8 @@
         <div class="phone-mockup">
           <span class="phone-notch"></span>
           <div class="card-video-wrap">
-            <video class="card-video" muted loop playsinline preload="metadata" poster="assets/portfolio/fashion-grwm-poster.jpg">
-              <source src="videos/fashion-grwm.mp4?v=4" type="video/mp4">
+            <video class="card-video" muted loop playsinline preload="none" data-poster="assets/portfolio/fashion-grwm-poster.webp?v=5">
+              <source src="videos/fashion-grwm.mp4?v=5" type="video/mp4">
             </video>
             <button class="play-btn" type="button" aria-label="Play or pause video">
               <span class="icon-play"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7L8 5Z"/></svg></span>
@@ -452,34 +464,34 @@
     <div class="marquee">
       <div class="marquee-track">
         <span>ORGANIC</span>
-        <img class="marquee-icon" src="assets/decor/laysan-mark.png" alt="" aria-hidden="true">
+        <img class="marquee-icon" src="assets/decor/laysan-mark.webp?v=5" width="26" height="21" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span>HOW TO</span>
-        <img class="marquee-icon" src="assets/decor/laysan-mark.png" alt="" aria-hidden="true">
+        <img class="marquee-icon" src="assets/decor/laysan-mark.webp?v=5" width="26" height="21" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span>UGC ADS</span>
-        <img class="marquee-icon" src="assets/decor/laysan-mark.png" alt="" aria-hidden="true">
+        <img class="marquee-icon" src="assets/decor/laysan-mark.webp?v=5" width="26" height="21" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span>PRODUCT REVIEW</span>
-        <img class="marquee-icon" src="assets/decor/laysan-mark.png" alt="" aria-hidden="true">
+        <img class="marquee-icon" src="assets/decor/laysan-mark.webp?v=5" width="26" height="21" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span>BTS</span>
-        <img class="marquee-icon" src="assets/decor/laysan-mark.png" alt="" aria-hidden="true">
+        <img class="marquee-icon" src="assets/decor/laysan-mark.webp?v=5" width="26" height="21" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span>PHOTOGRAPHY</span>
-        <img class="marquee-icon" src="assets/decor/laysan-mark.png" alt="" aria-hidden="true">
+        <img class="marquee-icon" src="assets/decor/laysan-mark.webp?v=5" width="26" height="21" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span>PRODUCT DEMO</span>
-        <img class="marquee-icon" src="assets/decor/laysan-mark.png" alt="" aria-hidden="true">
+        <img class="marquee-icon" src="assets/decor/laysan-mark.webp?v=5" width="26" height="21" alt="" aria-hidden="true" loading="lazy" decoding="async">
 
         <span>ORGANIC</span>
-        <img class="marquee-icon" src="assets/decor/laysan-mark.png" alt="" aria-hidden="true">
+        <img class="marquee-icon" src="assets/decor/laysan-mark.webp?v=5" width="26" height="21" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span>HOW TO</span>
-        <img class="marquee-icon" src="assets/decor/laysan-mark.png" alt="" aria-hidden="true">
+        <img class="marquee-icon" src="assets/decor/laysan-mark.webp?v=5" width="26" height="21" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span>UGC ADS</span>
-        <img class="marquee-icon" src="assets/decor/laysan-mark.png" alt="" aria-hidden="true">
+        <img class="marquee-icon" src="assets/decor/laysan-mark.webp?v=5" width="26" height="21" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span>PRODUCT REVIEW</span>
-        <img class="marquee-icon" src="assets/decor/laysan-mark.png" alt="" aria-hidden="true">
+        <img class="marquee-icon" src="assets/decor/laysan-mark.webp?v=5" width="26" height="21" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span>BTS</span>
-        <img class="marquee-icon" src="assets/decor/laysan-mark.png" alt="" aria-hidden="true">
+        <img class="marquee-icon" src="assets/decor/laysan-mark.webp?v=5" width="26" height="21" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span>PHOTOGRAPHY</span>
-        <img class="marquee-icon" src="assets/decor/laysan-mark.png" alt="" aria-hidden="true">
+        <img class="marquee-icon" src="assets/decor/laysan-mark.webp?v=5" width="26" height="21" alt="" aria-hidden="true" loading="lazy" decoding="async">
         <span>PRODUCT DEMO</span>
-        <img class="marquee-icon" src="assets/decor/laysan-mark.png" alt="" aria-hidden="true">
+        <img class="marquee-icon" src="assets/decor/laysan-mark.webp?v=5" width="26" height="21" alt="" aria-hidden="true" loading="lazy" decoding="async">
       </div>
     </div>
   </section>
@@ -492,42 +504,42 @@
     </div>
     <div class="gallery-grid">
       <figure class="gallery-card">
-        <div class="gallery-card-media"><img src="assets/hero/hero-red-dress.jpg" alt="Laysan laughing on the street in Florida" loading="lazy" style="object-position: center 73%"></div>
+        <div class="gallery-card-media"><img src="assets/hero/hero-red-dress-800.webp?v=5" srcset="assets/hero/hero-red-dress-480.webp?v=5 480w, assets/hero/hero-red-dress-800.webp?v=5 800w, assets/hero/hero-red-dress-1200.webp?v=5 1200w" sizes="(max-width: 420px) 90vw, (max-width: 560px) 380px, (max-width: 960px) 45vw, 400px" width="1200" height="2118" alt="Laysan laughing on the street in Florida" loading="lazy" decoding="async" style="object-position: center 73%"></div>
         <figcaption class="gallery-card-meta">
           <h3>Outdoor Lifestyle</h3>
           <p>Miami · Natural light</p>
         </figcaption>
       </figure>
       <figure class="gallery-card">
-        <div class="gallery-card-media"><img src="assets/gallery/gallery-dog-happy.jpg" alt="My happy dog" loading="lazy"></div>
+        <div class="gallery-card-media"><img src="assets/gallery/gallery-dog-happy-788.webp?v=5" srcset="assets/gallery/gallery-dog-happy-480.webp?v=5 480w, assets/gallery/gallery-dog-happy-788.webp?v=5 788w" sizes="(max-width: 420px) 90vw, (max-width: 560px) 380px, (max-width: 960px) 45vw, 400px" width="788" height="1400" alt="My happy dog" loading="lazy" decoding="async"></div>
         <figcaption class="gallery-card-meta">
           <h3>Life with Nika</h3>
           <p>Pet niche · Real home setting</p>
         </figcaption>
       </figure>
       <figure class="gallery-card">
-        <div class="gallery-card-media"><img src="assets/gallery/gallery-florida-1.jpg" alt="Walking around Miami" loading="lazy"></div>
+        <div class="gallery-card-media"><img src="assets/gallery/gallery-florida-1-800.webp?v=5" srcset="assets/gallery/gallery-florida-1-480.webp?v=5 480w, assets/gallery/gallery-florida-1-800.webp?v=5 800w, assets/gallery/gallery-florida-1-1200.webp?v=5 1200w" sizes="(max-width: 420px) 90vw, (max-width: 560px) 380px, (max-width: 960px) 45vw, 400px" width="1200" height="1342" alt="Walking around Miami" loading="lazy" decoding="async"></div>
         <figcaption class="gallery-card-meta">
           <h3>Summer Style</h3>
           <p>Everyday fashion</p>
         </figcaption>
       </figure>
       <figure class="gallery-card">
-        <div class="gallery-card-media"><img src="assets/gallery/gallery-chair.jpg" alt="Laysan on a chair" loading="lazy"></div>
+        <div class="gallery-card-media"><img src="assets/gallery/gallery-chair-800.webp?v=5" srcset="assets/gallery/gallery-chair-480.webp?v=5 480w, assets/gallery/gallery-chair-800.webp?v=5 800w, assets/gallery/gallery-chair-1200.webp?v=5 1200w" sizes="(max-width: 420px) 90vw, (max-width: 560px) 380px, (max-width: 960px) 45vw, 400px" width="1200" height="1600" alt="Laysan on a chair" loading="lazy" decoding="async"></div>
         <figcaption class="gallery-card-meta">
           <h3>Style &amp; Beauty</h3>
           <p>Workwear look</p>
         </figcaption>
       </figure>
       <figure class="gallery-card">
-        <div class="gallery-card-media"><img src="assets/gallery/gallery-dog.jpg" alt="Holding my dog" loading="lazy"></div>
+        <div class="gallery-card-media"><img src="assets/gallery/gallery-dog-800.webp?v=5" srcset="assets/gallery/gallery-dog-480.webp?v=5 480w, assets/gallery/gallery-dog-800.webp?v=5 800w, assets/gallery/gallery-dog-1037.webp?v=5 1037w" sizes="(max-width: 420px) 90vw, (max-width: 560px) 380px, (max-width: 960px) 45vw, 400px" width="1037" height="1328" alt="Holding my dog" loading="lazy" decoding="async"></div>
         <figcaption class="gallery-card-meta">
           <h3>Cozy Home</h3>
           <p>Pets · Home lifestyle</p>
         </figcaption>
       </figure>
       <figure class="gallery-card">
-        <div class="gallery-card-media"><img src="assets/gallery/gallery-florida-2.jpg" alt="Sunset on the beach in Florida" loading="lazy"></div>
+        <div class="gallery-card-media"><img src="assets/gallery/gallery-florida-2-800.webp?v=5" srcset="assets/gallery/gallery-florida-2-480.webp?v=5 480w, assets/gallery/gallery-florida-2-800.webp?v=5 800w, assets/gallery/gallery-florida-2-1049.webp?v=5 1049w" sizes="(max-width: 420px) 90vw, (max-width: 560px) 380px, (max-width: 960px) 45vw, 400px" width="1049" height="1400" alt="Sunset on the beach in Florida" loading="lazy" decoding="async"></div>
         <figcaption class="gallery-card-meta">
           <h3>Active Florida Life</h3>
           <p>Fitness · Outdoors</p>
@@ -603,7 +615,7 @@
   <div class="footer-grid">
     <div class="footer-brand">
       <a href="#top" class="footer-logo" aria-label="Laysan — home">
-        <img src="assets/decor/laysan-mark.png" alt="" width="56" height="46">
+        <img src="assets/decor/laysan-mark.webp?v=5" alt="" width="56" height="46" loading="lazy" decoding="async">
       </a>
       <p>I make UGC for fashion, pet, fitness, and home brands with real curiosity and a friend's warmth.</p>
     </div>
@@ -619,6 +631,7 @@
       <h3>Connect</h3>
       <a href="mailto:leysantseyko@gmail.com">leysantseyko@gmail.com</a>
       <a href="https://instagram.com/laysanalb" class="social-link" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.tiktok.com/@byleysa" class="social-link" target="_blank" rel="noopener">TikTok</a>
       <span>Location: Miami, FL</span>
     </div>
   </div>
@@ -627,6 +640,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=2"></script>
+<script src="script.js?v=3"></script>
 </body>
 </html>

@@ -28,7 +28,7 @@
   /* ---------- viewfinder: cycle sources + live timecode ---------- */
   const vf = document.querySelector('.viewfinder-video');
   const timecode = document.querySelector('.timecode');
-  const clips = ['videos/hero-loop.mp4'];
+  const clips = ['videos/hero-loop.mp4?v=5'];
   let clipIndex = 0;
 
   function fmt(t) {
@@ -222,4 +222,16 @@
   }, { threshold: 0.5 });
 
   document.querySelectorAll('.portfolio-card .card-video').forEach((v) => cardIo.observe(v));
+
+  /* ---------- portfolio posters: fetched only as the row nears the screen ---------- */
+  const posterIo = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const v = entry.target;
+      v.poster = v.dataset.poster;
+      posterIo.unobserve(v);
+    });
+  }, { rootMargin: '600px 0px' });
+
+  document.querySelectorAll('.portfolio-card .card-video[data-poster]').forEach((v) => posterIo.observe(v));
 })();
